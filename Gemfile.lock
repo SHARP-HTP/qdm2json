@@ -44,6 +44,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
+    rake (10.0.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.9)
@@ -64,4 +65,5 @@ PLATFORMS
 DEPENDENCIES
   health-data-standards (~> 3.1.1)
   pry
+  rake
   sinatra
