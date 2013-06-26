@@ -4,5 +4,4 @@ gem 'health-data-standards', '~> 3.1.1'
 gem 'pry'
 gem 'sinatra'
 gem 'rake'
-
-require 'json'
+gem 'json'
