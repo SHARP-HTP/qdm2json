@@ -1,4 +1,7 @@
-<form action='' enctype='multipart/form-data' method='post' class="form-inline well">
+<div class="hero-unit">
+  <h1>QDM XML to JSON</h1>
+  <p>Convert your QDM XML file into easily parsable JSON.</p>
+<form action='/qdm2json' enctype='multipart/form-data' method='post' class="form-inline well">
 
 <div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="input-append">
@@ -6,9 +9,15 @@
       <span class="fileupload-preview"></span></div>
     <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
       <input type="file" name="file"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+
   </div>
-  <br/>
-  <br/>
-  <input class="btn btn-large btn-primary fileupload-exists" type='submit' value='Convert'>
+      <input class="btn btn-primary fileupload-exists" type='submit' value='Convert!'>
+
 </div>
 </form>
+  <p>
+    <a class="btn btn-primary btn-large" href="/api">
+      Learn more
+    </a>
+  </p>
+</div>

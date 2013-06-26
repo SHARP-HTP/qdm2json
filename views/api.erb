@@ -1,0 +1,35 @@
+<h2>REST API</h2>
+
+<h2>Convert QDM XML to JSON</h2>
+
+<p>Convert an XML representation of QDM to JSON format</p>
+
+<p><span class="label label-info">Note:</span> JSON format is provided by the
+  <a href="https://github.com/pophealth/hqmf-parser">hqmf-parser</a>.</p>
+
+<pre><code>POST /converter</code></pre>
+
+<h3>Headers</h3>
+<dl>
+  <dt>Content-Type</dt>
+  <dd><code>multipart/form-data</code></dd>
+</dl>
+
+<h3>Parameters</h3>
+
+<dl>
+  <dt>file</dt>
+  <dd>The QDM XML file.</dd>
+</dl>
+
+
+<h3>Example</h3>
+
+<pre class="highlight">
+  curl -X POST -F file=@/path/to/QDM.xml <span id="url"></span>qdm2json
+</pre>
+
+<script>
+    var value = location.href.substring(0, location.href.lastIndexOf('/') + 1);
+    $('#url').html(value)
+</script>

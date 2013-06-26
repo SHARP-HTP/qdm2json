@@ -16,13 +16,17 @@ error do
   halt erb :error
 end
 
-post "/converter" do
+post "/qdm2json" do
   doc = params['file'][:tempfile].read
 
   content_type :json
   Converter::to_json( doc ).to_json.to_json
 end
 
-get '/converter' do
-  erb :upload_form
+get '/' do
+  erb :home
+end
+
+get '/api' do
+  erb :api
 end

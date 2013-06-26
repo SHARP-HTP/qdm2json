@@ -8,36 +8,76 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css">
     <link rel="stylesheet" href="/vendor/fontawesome/css/font-awesome.min.css">
+    <style type="text/css">
+        footer {
+            height: 60px;
+        }
+        body {
+            margin-bottom: 60px;
+        }
+        footer {
+            background-color: #f5f5f5;
+        }
+        .hero-unit {
+            background-color: #ffffff;
+        }
+        .credit {
+            margin: 20px 0;
+        }
+        .container {
+            width: 800px;
+        }
+    </style>
   </head>
   <body style="padding-top: 50px;">
 
+    <div id="wrap">
     <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
 
-            <a class="brand" href="#">
+      <div class="navbar-inner">
+
+        <div class="container">
+          <a href="https://github.com/kevinpeterson/qdm2json"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+          <a class="brand" href="#">
               QDM XML to JSON Converter
             </a>
 
-            <ul class="nav pull-right">
-              <li><a href="http://phenotypeportal.org/">Phenotype Portal</a></li>
-              <li><a href="https://github.com/pophealth/hqmf-parser">hqmf-parser</a></li>
-            </ul>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            <li><a href="/">Home</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="/api">API</a></li>
+            <li class="divider-vertical"></li>
+          </ul>
 
         </div>
       </div>
     </div>
 
-
 	<div class="container">
 		<%if @error then %>
 			<div class="alert alert-error">
                 <%=@error%>
-                <a href="/converter" class="close" data-dismiss="alert">&times;</a>
+                <a href="/" class="close" data-dismiss="alert">&times;</a>
             </div>
 
 		<% end %>
-    	<%= yield %>
+        <%= yield %>
+
 	</div>
+
+    </div>
+
+    <footer class="navbar navbar-fixed-bottom">
+      <div class="container">
+        <p class="muted credit">
+         Powered by the <a href="https://github.com/pophealth/hqmf-parser">hqmf-parser</a>.
+         For more information see the
+         <a href="http://phenotypeportal.org/">Phenotype Portal</a>.
+        </p>
+      </div>
+    </footer>
   </body>
+
 </html>
