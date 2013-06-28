@@ -18,7 +18,14 @@ end
 
 post "/qdm2json" do
   doc = params['file'][:tempfile].read
-  version = params['version']
+  version_param = params['version']
+
+  version =
+  if version_param.to_s.empty?
+    HQMF::Parser::HQMF_VERSION_1
+  else
+    version_param
+  end
 
   content_type :json
   Converter::to_json( doc, version ).to_json.to_json
