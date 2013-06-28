@@ -18,9 +18,10 @@ end
 
 post "/qdm2json" do
   doc = params['file'][:tempfile].read
+  version = params['version']
 
   content_type :json
-  Converter::to_json( doc ).to_json.to_json
+  Converter::to_json( doc, version ).to_json.to_json
 end
 
 get '/' do

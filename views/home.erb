@@ -11,7 +11,18 @@
       <input type="file" name="file"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 
   </div>
-      <input class="btn btn-primary fileupload-exists" type='submit' value='Convert!'>
+      <button class="btn btn-primary fileupload-exists dropdown-toggle" type='submit'>Convert!</button>
+      <div class="fileupload-exists">
+          <small>QDM Version</small>
+          <label class="radio">
+              <input type="radio" name="version" id="qdm1.0" value="1.0" checked>
+              <span >1.0</span>
+          </label>
+          <label class="radio">
+              <input type="radio" name="version" id="qdm2.0" value="2.0">
+              <span >2.0</span>
+          </label>
+      </div>
 
 </div>
 </form>
