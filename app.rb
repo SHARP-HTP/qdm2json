@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'json'
 require_relative 'lib/converter'
+require_relative 'lib/hqmf_rest_client'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
@@ -14,6 +15,15 @@ error do
   @error = env['sinatra.error'].message
 
   halt erb :error
+end
+
+get "/qdm2json" do
+  measure_id = params['measureid']
+
+  doc = RestClient::get_hqmf_xml_by_measure_id(measure_id)
+
+  content_type :json
+  Converter::to_json( doc ).to_json.to_json
 end
 
 post "/qdm2json" do
@@ -32,6 +42,7 @@ post "/qdm2json" do
 end
 
 get '/' do
+  @test = RestClient::get_emeasure_descriptions
   erb :home
 end
 

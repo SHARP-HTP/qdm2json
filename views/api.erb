@@ -7,6 +7,8 @@
 <p><span class="label label-info">Note:</span> JSON format is provided by the
   <a href="https://github.com/pophealth/hqmf-parser">hqmf-parser</a>.</p>
 
+<div style="border: 1px solid #ccc; padding: 10px">
+<h2>HQMF XML File Upload</h2>
 <pre><code>POST /qdm2json</code></pre>
 
 <h3>Headers</h3>
@@ -33,10 +35,38 @@
 <h3>Example</h3>
 
 <pre class="highlight">
-  curl -X POST -F file=@/path/to/QDM.xml <span id="url"></span>qdm2json
+  curl -X POST -F file=@/path/to/QDM.xml <span class="url"></span>qdm2json
 </pre>
+</div>
+
+<div style="border: 1px solid #ccc; padding: 10px">
+<h2>Retrieve by identifier</h2>
+<pre><code>GET /qdm2json</code></pre>
+
+<h3>Parameters</h3>
+
+<dl>
+    <dt>measureid</dt>
+    <dd>The eMeasure ID</dd>
+</dl>
+
+<dl>
+    <dt>nqfid</dt>
+    <dd>The NQF ID</dd>
+</dl>
+
+<dl>
+    <dd>Either<code>measureid</code> or <code>nqfid</code> are allowed, but not both.</dd>
+</dl>
+
+<h3>Example</h3>
+
+<pre class="highlight">
+  curl -X GET -F <span class="url"></span>qdm2json?measureid=124
+</pre>
+</div>
 
 <script>
     var value = location.href.substring(0, location.href.lastIndexOf('/') + 1);
-    $('#url').html(value)
+    $('.url').html(value)
 </script>

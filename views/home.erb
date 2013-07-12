@@ -1,32 +1,81 @@
 <div class="hero-unit">
   <h1>QDM XML to JSON</h1>
   <p>Convert your QDM XML file into easily parsable JSON.</p>
-<form action='/qdm2json' enctype='multipart/form-data' method='post' class="form-inline well">
 
-<div class="fileupload fileupload-new" data-provides="fileupload">
-  <div class="input-append">
-    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i>
-      <span class="fileupload-preview"></span></div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#measureid").select2({
+                formatResult: format,
+                escapeMarkup: function(m) { return m; }
+            });
+        });
+
+        function format(emeasure) {
+            return "<span class='label'>"+$(emeasure.element).data('nqfid')+"</span> "+emeasure.text;
+        }
+    </script>
+
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#byMeasureId" data-toggle="tab">Select Measure</a></li>
+        <li><a href="#fileUpload" data-toggle="tab">File Upload</a></li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="byMeasureId">
+            <form action='/qdm2json' id="emeasureForm" method='get' class="form-inline well">
+                <select id="measureid" name="measureid" class="combobox" style="width:80%">
+                    <% @test.each do |emeasure| %>
+                        <option data-nqfid="<%=emeasure.nqf_id%>" value="<%=emeasure.measure_id%>"></span><%=emeasure.title.truncate(75)%></option>
+                    <% end %>
+                </select>
+                <button class="btn btn-primary dropdown-toggle" type='submit'>Convert!</button>
+            </form>
+        </div>
+        <div class="tab-pane" id="fileUpload">
+            <form action='/qdm2json' enctype='multipart/form-data' method='post' class="form-inline well">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="input-append">
+                        <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i>
+                            <span class="fileupload-preview"></span></div>
     <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span>
       <input type="file" name="file"/></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 
-  </div>
-      <button class="btn btn-primary fileupload-exists dropdown-toggle" type='submit'>Convert!</button>
-      <div class="fileupload-exists">
-          <small>QDM Version</small>
-          <label class="radio">
-              <input type="radio" name="version" id="qdm1.0" value="1.0" checked>
-              <span >1.0</span>
-          </label>
-          <label class="radio">
-              <input type="radio" name="version" id="qdm2.0" value="2.0">
-              <span >2.0</span>
-          </label>
-      </div>
+                    </div>
+                    <button class="btn btn-primary fileupload-exists dropdown-toggle" type='submit'>Convert!</button>
+                    <div class="fileupload-exists">
+                        <small>QDM Version</small>
+                        <label class="radio">
+                            <input type="radio" name="version" id="qdm1.0" value="1.0" checked>
+                            <span >1.0</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="version" id="qdm2.0" value="2.0">
+                            <span >2.0</span>
+                        </label>
+                    </div>
 
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-</form>
-  <p>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+<p>
     <a class="btn btn-primary btn-large" href="/api">
       Learn more
     </a>
