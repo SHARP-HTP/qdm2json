@@ -6,7 +6,7 @@ $emeasure_descriptions = []
 module RestClient
 
   def RestClient.get_hqmf_xml_by_measure_id(measure_id)
-    get_hqmf_xml("MeasureId", measure_id)
+    get_hqmf_xml("measureId", measure_id)
   end
 
   def RestClient.get_hqmf_xml_by_nqf_id(measure_id)
