@@ -5,11 +5,15 @@ module Converter
 
   HQMF_ROOT_NODE_NAME = "QualityMeasureDocument"
 
-  def Converter.to_json(content, version=HQMF::Parser::HQMF_VERSION_1)
-    validate_doc(content)
-    validate_version(version)
+  @semaphore = Mutex.new
 
-    HQMF::Parser.parse(content, version)
+  def Converter.to_json(content, version=HQMF::Parser::HQMF_VERSION_1)
+    @semaphore.synchronize {
+      validate_doc(content)
+      validate_version(version)
+
+      HQMF::Parser.parse(content, version)
+    }
   end
 
   private
