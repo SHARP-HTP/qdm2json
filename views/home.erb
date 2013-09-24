@@ -22,7 +22,7 @@
 
     <div id="my-tab-content" class="tab-content">
         <div class="tab-pane active" id="byMeasureId">
-            <form action='/qdm2json' id="emeasureForm" method='get' class="form-inline well">
+            <form action='qdm2json' id="emeasureForm" method='get' class="form-inline well">
                 <select id="measureid" name="measureid" class="combobox" style="width:80%">
                     <% @test.each do |emeasure| %>
                         <option data-nqfid="<%=emeasure.nqf_id%>" value="<%=emeasure.measure_id%>"></span><%=emeasure.title.truncate(75)%></option>
@@ -32,7 +32,7 @@
             </form>
         </div>
         <div class="tab-pane" id="fileUpload">
-            <form action='/qdm2json' enctype='multipart/form-data' method='post' class="form-inline well">
+            <form action='qdm2json' enctype='multipart/form-data' method='post' class="form-inline well">
                 <div class="fileupload fileupload-new" data-provides="fileupload">
                     <div class="input-append">
                         <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i>
